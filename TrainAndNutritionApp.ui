@@ -40,6 +40,30 @@
      <string>Calculate Nutrition Intake</string>
     </property>
    </widget>
+   <widget class="QTableWidget" name="nutritionTable">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>130</y>
+      <width>421</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="rowCount">
+     <number>4</number>
+    </property>
+    <property name="columnCount">
+     <number>4</number>
+    </property>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column/>
+    <column/>
+    <column/>
+    <column/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

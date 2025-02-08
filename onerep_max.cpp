@@ -14,7 +14,7 @@ double OneRepMax::oneRepMaxLogic(double weight,int numberOfReps,int formula) {
 
     switch (formula) {
     case 1:
-        oneRepMax = weight * (36 / (37 - numberOfReps));
+        oneRepMax = weight * (36.0 / (37.0 - numberOfReps));
         formulaName = "Bryzcki Formula";
         break;
     case 2:

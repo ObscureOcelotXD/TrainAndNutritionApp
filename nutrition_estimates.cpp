@@ -2,40 +2,38 @@
 #include <iomanip>
 #include "nutrition_estimates.h"
 
-static double weight = 0;
 
-double protienGainLow = 0;
-double protienGainHigh = 0;
-double protienFatLossLow = 0;
-double protienFatLossHigh = 0;
-double protienMaintenenceLow = 0;
-double protienMaintenenceHigh = 0;
 
-double carbsGainLow = 0;
-double carbsGainHigh = 0;
-double carbsFatLossLow = 0;
-double carbsFatLossHigh = 0;
-double carbsMaintenenceLow = 0;
-double carbsMaintenenceHigh = 0;
 
-double fatsGainLow = 0;
-double fatsGainHigh = 0;
-double fatsFatLossLow = 0;
-double fatsFatLossHigh = 0;
-double fatsMaintenenceLow = 0;
-double fatsMaintenenceHigh = 0;
+NutritionValues NutritionInfo::nutritionLogic(double weight) {
 
-double caloriesGainLow = 0;
-double caloriesGainHigh = 0;
-double caloriesFatLossLow = 0;
-double caloriesFatLossHigh = 0;
-double caloriesMaintainLow = 0;
-double caloriesMaintainHigh = 0;
+    double protienGainLow = 0;
+    double protienGainHigh = 0;
+    double protienFatLossLow = 0;
+    double protienFatLossHigh = 0;
+    double protienMaintenenceLow = 0;
+    double protienMaintenenceHigh = 0;
 
-void nutritionLogic() {
+    double carbsGainLow = 0;
+    double carbsGainHigh = 0;
+    double carbsFatLossLow = 0;
+    double carbsFatLossHigh = 0;
+    double carbsMaintenenceLow = 0;
+    double carbsMaintenenceHigh = 0;
 
-    std::cout << "Enter Weight in lb \n";
-    std::cin >> weight;
+    double fatsGainLow = 0;
+    double fatsGainHigh = 0;
+    double fatsFatLossLow = 0;
+    double fatsFatLossHigh = 0;
+    double fatsMaintenenceLow = 0;
+    double fatsMaintenenceHigh = 0;
+
+    double caloriesGainLow = 0;
+    double caloriesGainHigh = 0;
+    double caloriesFatLossLow = 0;
+    double caloriesFatLossHigh = 0;
+    double caloriesMaintainLow = 0;
+    double caloriesMaintainHigh = 0;
 
     protienGainLow = weight * (0.7);
     protienGainHigh = weight * (1.0);
@@ -98,45 +96,72 @@ void nutritionLogic() {
     std::cout << "To maintain muscle you should consume between: " << fatsMaintenenceLow << " and " << fatsMaintenenceHigh << " grams of fats. \n";
     std::cout << "To maintain muscle calories should be between: " << caloriesMaintainLow << " - " << caloriesMaintainHigh << " kcal. \n\n";
 
-    displayNutrition();
+    NutritionValues values;
 
+    values.protienGainLow = protienGainLow;
+    values.protienGainHigh = protienGainHigh;
+    values.protienFatLossLow = protienFatLossLow;
+    values.protienFatLossHigh = protienFatLossHigh;
+    values.protienMaintenenceLow = protienMaintenenceLow;
+    values.protienMaintenenceHigh = protienMaintenenceHigh;
+    values.carbsGainLow = carbsGainLow;
+    values.carbsGainHigh = carbsGainHigh;
+    values.carbsFatLossLow = carbsFatLossLow;
+    values.carbsFatLossHigh = carbsFatLossHigh;
+    values.carbsMaintenenceLow = carbsMaintenenceLow;
+    values.carbsMaintenenceHigh = carbsMaintenenceHigh;
+    values.fatsGainLow = fatsGainLow;
+    values.fatsGainHigh = fatsGainHigh;
+    values.fatsFatLossLow = fatsFatLossLow;
+    values.fatsFatLossHigh = fatsFatLossHigh;
+    values.fatsMaintenenceLow = fatsMaintenenceLow;
+    values.fatsMaintenenceHigh = fatsMaintenenceHigh;
+    values.caloriesGainLow = caloriesGainLow;
+    values.caloriesGainHigh = caloriesGainHigh;
+    values.caloriesFatLossLow = caloriesFatLossLow;
+    values.caloriesFatLossHigh = caloriesFatLossHigh;
+    values.caloriesMaintainLow = caloriesMaintainLow;
+    values.caloriesMaintainHigh = caloriesMaintainHigh;
+
+    //displayNutrition();
+	return values;
 }
 
-void displayNutrition() {
-
-    std::cout << "\nNutrition Table for " << weight << " lbs\n";
-    std::cout << std::left
-        << std::setw(15) << "Goal"
-        << std::setw(15) << "Protein (g)"
-        << std::setw(15) << "Carbs (g)"
-        << std::setw(15) << "Fats (g)"
-        << std::setw(20) << "Calories (kcal)"
-        << std::endl;
-
-    std::cout << std::string(80, '-') << std::endl;
-
-    std::cout << std::left
-        << std::setw(15) << "Muscle Gain"
-        << std::setw(3) << protienGainLow << std::setw(1) << "-" << std::setw(11) << protienGainHigh
-        << carbsGainLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsGainHigh
-        << fatsGainLow << std::setw(1) << "-" << std::setw(12) << fatsGainHigh
-        << caloriesGainLow << "-" << caloriesGainHigh
-        << std::endl;
-
-    std::cout << std::left
-        << std::setw(15) << "Lean Out"
-        << std::setw(3) << protienFatLossLow << std::setw(1) << "-" << std::setw(11) << protienFatLossHigh
-        << carbsFatLossLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsFatLossHigh
-        << fatsFatLossLow << std::setw(1) << "-" << std::setw(12) << fatsFatLossHigh
-        << caloriesFatLossLow << "-" << caloriesFatLossHigh
-        << std::endl;
-
-    std::cout << std::left
-        << std::setw(15) << "Maintain"
-        << std::setw(3) << protienMaintenenceLow << std::setw(1) << "-" << std::setw(11) << protienMaintenenceHigh
-        << carbsMaintenenceLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsMaintenenceHigh
-        << fatsMaintenenceLow << std::setw(1) << "-" << std::setw(12) << fatsMaintenenceHigh
-        << caloriesMaintainLow << "-" << caloriesMaintainHigh
-        << std::endl;
-
-}
+//void displayNutrition() {
+//
+//    std::cout << "\nNutrition Table for " << weight << " lbs\n";
+//    std::cout << std::left
+//        << std::setw(15) << "Goal"
+//        << std::setw(15) << "Protein (g)"
+//        << std::setw(15) << "Carbs (g)"
+//        << std::setw(15) << "Fats (g)"
+//        << std::setw(20) << "Calories (kcal)"
+//        << std::endl;
+//
+//    std::cout << std::string(80, '-') << std::endl;
+//
+//    std::cout << std::left
+//        << std::setw(15) << "Muscle Gain"
+//        << std::setw(3) << protienGainLow << std::setw(1) << "-" << std::setw(11) << protienGainHigh
+//        << carbsGainLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsGainHigh
+//        << fatsGainLow << std::setw(1) << "-" << std::setw(12) << fatsGainHigh
+//        << caloriesGainLow << "-" << caloriesGainHigh
+//        << std::endl;
+//
+//    std::cout << std::left
+//        << std::setw(15) << "Lean Out"
+//        << std::setw(3) << protienFatLossLow << std::setw(1) << "-" << std::setw(11) << protienFatLossHigh
+//        << carbsFatLossLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsFatLossHigh
+//        << fatsFatLossLow << std::setw(1) << "-" << std::setw(12) << fatsFatLossHigh
+//        << caloriesFatLossLow << "-" << caloriesFatLossHigh
+//        << std::endl;
+//
+//    std::cout << std::left
+//        << std::setw(15) << "Maintain"
+//        << std::setw(3) << protienMaintenenceLow << std::setw(1) << "-" << std::setw(11) << protienMaintenenceHigh
+//        << carbsMaintenenceLow << std::setw(1) << "-" << std::setw(5) << std::setw(11) << carbsMaintenenceHigh
+//        << fatsMaintenenceLow << std::setw(1) << "-" << std::setw(12) << fatsMaintenenceHigh
+//        << caloriesMaintainLow << "-" << caloriesMaintainHigh
+//        << std::endl;
+//
+//}
